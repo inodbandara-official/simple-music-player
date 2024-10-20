@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title id="pageTitle">Music Player</title>
+		<link href="/icons/sound2.png" type="image/png" rel="shortcut icon"/>
+		<link href="player.css.php" type="text/css" rel="stylesheet"/>
+		<script src="playlist.php" type="application/javascript" charset="UTF-8"></script>
+		<script src="player.js" type="application/javascript" charset="UTF-8"></script>
+	</head>
+	<body onload="init();">
+		<div id="player">
+			<img id="cover" alt="&#127925;"/>
+			<div id="ctrl">
+				<h4 id="title"></h4>
+				<input id="back" type="button" value="|&#x25c0;&#x25c0;"/>
+				<input id="next" type="button" value="&#9654;&#9654;|"/><br/>
+				<input id="wipe" type="button" value="Clear Played List">
+			</div>
+			<div id="id3">
+				Title: <span id="id3_title"></span><br/>
+				Artist: <span id="id3_artist"></span><br/>
+				Album: <span id="id3_album"></span><br class="year"/>
+				<span class="year">Year:</span> <span id="id3_year" class="year"></span>
+			</div>
+			<audio id="audio" controlsList="nodownload" autoplay>This is your browser speaking, I don't support HTML5 cause I am too old to learn new tricks.</audio>
+			<!-- Custom player ui notes
+				This only exist here cause mobile browsers do not have a volume slider
+				If you do not like my custom audio UI just delete the below html block
+				and enjoy the browers stock ui
+				*Speaker char does not work in chrome on windows 7
+				&#128264; - Speaker Off
+				&#128265; - Speaker Low
+				&#128266; - Speaker High
+				&#127925; - Musical Note
+				&#9612;&#9612; - Pause
+				&#9654; - Play
+			-->
+			<div id="audioUI">
+				<span id="playPause"></span>
+				<input id="current" type="range" min="0" max="1" step="0.00000001"/>
+				<span><span id="time"></span> / <span id="length"></span>&nbsp;</span>
+				<span id="mute" title="Mute"></span>
+				<input id="volume" type="range" min="0" max="1" step="0.01"/>
+			</div>
+			<p id="error" title="Click to hide"></p>
+			<div id="opts">
+				<div><span>Shuffle: <input id="shuffle" type="checkbox"/></span></div>
+				<div><span>Repeat: <input id="repeat" type="checkbox"/></span></div>
+				<div><span>Loop: <input id="loop" type="checkbox"/></span></div>
+			</div>
+		</div>
+		<br/>
+		<div id="tab_container" class="playlist">
+			<div id="tabs">
+				<div class="playlist">Library</div>
+				<div class="find">Search</div>
+				<div class="hst">History</div>
+			</div>
+			<span>
+				<span>Track </span><span>Action: </span><select id="action">
+					<option>Play</option>
+					<option>Enqueue</option><!-- And here was thinking eqeue was hard to spell! -->
+				</select>
+			</span>
+			<div id="tab_content">
+				<div id="playlist"></div>
+				<div id="find">
+					<form action="#" name="search">
+						Find: <input type="text" name="str"/>
+						<span><input type="checkbox" name="case"/><span onclick="this.previousSibling.click()"> Case Sensitive</span></span>
+						<br/>
+						Match <select name="match"/>
+							<option value="name">File Name</option>
+							<option value="path">Full Path</option>
+						</select>
+						<input type="submit" value="Find"/>
+					</form>
+					<hr/>
+					<ul id="search"></ul>
+				</div>
+				<div id="hst">
+					Current loaded track: <span id="index"></span>
+					<ol id="queue"></ol>
+				</div>
+			</div>
+		</div>
+		<!--<br/><div id="debugHst"></div>-->
+	</body>
+</html>
