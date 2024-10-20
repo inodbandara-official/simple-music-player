@@ -14,7 +14,7 @@ Note: ID3 (meta data from audio files) data is not displayed on very low screen 
 Note: Playback can be restricted to a single folder by double clicking it</pre>
 
 ## Overview:<br/>
-<img src="https://raw.githubusercontent.com/GM-Script-Writer-62850/HTML5-Music-Player/master/overview.png"/>
+<img src="https://raw.githubusercontent.com/inodbandara-official/simple-music-player/master/sample.png"/>
 
 ## Keyboard shortcuts:<br/>
 <pre>
